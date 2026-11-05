@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador do Sistema Solar: N-corpos e espaço-tempo</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {"imports":{
+    "three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }}
+  </script>
+</head>
+<body>
+  <canvas id="c"></canvas>
+
+  <section class="panel" id="sim">
+    <h1>Controle da simulação</h1>
+    <div class="row">
+      <button id="play">⏸ Pausar</button>
+      <button id="reset">↺ Sistema Solar</button>
+    </div>
+    <label>Velocidade do tempo <span id="speedVal">1.00×</span>
+      <input id="speed" type="range" min="0" max="1" step="0.005" value="0.5">
+    </label>
+    <label class="chk"><input id="grid" type="checkbox" checked> Malha do espaço-tempo</label>
+  </section>
+
+  <section class="panel" id="add">
+    <h2>Adicionar corpo</h2>
+    <div class="row wrap">
+      <button data-add="rocky">Planeta rochoso</button>
+      <button data-add="gas">Gigante gasoso</button>
+      <button data-add="star">Estrela</button>
+      <button data-add="pulsar">Pulsar</button>
+      <button data-add="blackhole">Buraco negro</button>
+    </div>
+    <p class="hint">Clique num corpo para editá-lo. Arraste para orbitar, role para dar zoom.</p>
+  </section>
+
+  <aside class="panel" id="editor" hidden>
+    <h2 id="ed-name"></h2>
+    <div id="ed-fields"></div>
+    <div class="row">
+      <button id="ed-follow">Seguir</button>
+      <button id="ed-del">Remover</button>
+    </div>
+    <button class="magic" id="ed-bh">Transformar em buraco negro</button>
+    <button id="ed-close">Fechar</button>
+  </aside>
+
+  <dialog id="spawn">
+    <form id="spawn-form">
+      <h2 id="sp-title"></h2>
+      <div id="sp-fields"></div>
+      <button type="button" id="sp-orbit">Usar velocidade orbital circular</button>
+      <div class="row">
+        <button type="button" id="sp-cancel">Cancelar</button>
+        <button class="magic">Criar corpo</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
